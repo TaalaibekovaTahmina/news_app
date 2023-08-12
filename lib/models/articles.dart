@@ -9,7 +9,7 @@ class Articles {
     this.url,
     this.urlToImage,
     required this.publishedAt,
-    required this.content,
+    this.content,
   });
 
   final Source source;
@@ -19,7 +19,7 @@ class Articles {
   final String? url;
   final String? urlToImage;
   final String publishedAt;
-  final String content;
+  final String? content;
 
   Map<String, dynamic> toJson() {
     return <String, dynamic>{
@@ -45,7 +45,7 @@ class Articles {
       urlToImage:
           json['urlToImage'] != null ? json['urlToImage'] as String : null,
       publishedAt: json['publishedAt'] as String,
-      content: json['content'] as String,
+      content: json['content'] != null ? json['content'] as String : null,
     );
   }
 }

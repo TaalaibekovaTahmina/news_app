@@ -25,7 +25,7 @@ class TopNews {
       status: json['status'] as String,
       totalResults: json['totalResults'] as int,
       articles: List<Articles>.from(
-        (json['articles'] as List<int>).map<Articles>(
+        (json['articles'] as List<dynamic>).map<Articles>(
           (x) => Articles.fromJson(x as Map<String, dynamic>),
         ),
       ),
