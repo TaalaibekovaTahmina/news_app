@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:tirkeme11/models/articles.dart';
 
 class TopNews {
@@ -8,11 +6,12 @@ class TopNews {
     required this.totalResults,
     required this.articles,
   });
+
   final String status;
   final int totalResults;
   final List<Articles> articles;
 
-  Map<String, dynamic> toJson() {
+  Map<String, dynamic> toMap() {
     return <String, dynamic>{
       'status': status,
       'totalResults': totalResults,

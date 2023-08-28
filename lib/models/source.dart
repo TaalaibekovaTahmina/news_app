@@ -1,12 +1,10 @@
 class Source {
-  const Source({
-    this.id,
-    this.name,
-  });
+  const Source({this.id, this.name});
+
   final String? id;
   final String? name;
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
       'name': name,
@@ -19,6 +17,4 @@ class Source {
       name: json['name'] != null ? json['name'] as String : null,
     );
   }
-
-  toJson() {}
 }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tirkeme11/constants/api_const.dart';
+import 'package:tirkeme11/companents/news_card.dart';
 import 'package:tirkeme11/models/top_news.dart';
 import 'package:tirkeme11/services/fetch_service.dart';
 import 'package:tirkeme11/theme/app_colors.dart';
-import 'package:tirkeme11/views/detail_view.dart';
+import 'package:tirkeme11/views/search_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -46,42 +46,24 @@ class _HomeViewState extends State<HomeView> {
               itemCount: topNews!.articles.length,
               itemBuilder: (context, index) {
                 final item = topNews!.articles[index];
-                return Card(
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const DetailView(),
-                        ),
-                      );
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Row(
-                        children: [
-                          Expanded(
-                            flex: 3,
-                            child: Image.network(
-                              item.urlToImage ?? ApiConst.image,
-                              fit: BoxFit.fitWidth,
-                            ),
-                          ),
-                          const SizedBox(width: 14),
-                          Expanded(
-                            flex: 5,
-                            child: Text(
-                              item.title,
-                              style: const TextStyle(fontSize: 16),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                );
+                return NewsCard(item: item);
               },
             ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: AppColors.appBar,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SearchView(),
+            ),
+          );
+        },
+        child: const Icon(
+          Icons.search,
+          color: AppColors.white,
+        ),
+      ),
     );
   }
 }

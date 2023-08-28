@@ -4,7 +4,7 @@ class Articles {
   const Articles({
     required this.source,
     this.author,
-    required this.title,
+    this.title,
     this.description,
     this.url,
     this.urlToImage,
@@ -14,7 +14,7 @@ class Articles {
 
   final Source source;
   final String? author;
-  final String title;
+  final String? title;
   final String? description;
   final String? url;
   final String? urlToImage;
@@ -38,7 +38,7 @@ class Articles {
     return Articles(
       source: Source.fromJson(json['source'] as Map<String, dynamic>),
       author: json['author'] != null ? json['author'] as String : null,
-      title: json['title'] as String,
+      title: json['title'] != null ? json['title'] as String : null,
       description:
           json['description'] != null ? json['description'] as String : null,
       url: json['url'] != null ? json['url'] as String : null,
